@@ -5,10 +5,20 @@ for robust and invisible blind image watermarking
 with optimal embedding strength](https://link.springer.com/article/10.1007/s11042-017-4941-1) by Xiao-bing et al.
 
 ## Still In-Progess
+* DWT completed.
+* Logistic chaotic key generation completed.
+* Watermark encryption, decryption completed.
+* DCT - In Progress.
+* SVD - In Progress.
+* Inverse of the above process - watermarking extraction - In Progress.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+## How to use?
+
+It is good to start with [watermarking_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_demo.ipynb) file
 
 
 ## Prerequisites
