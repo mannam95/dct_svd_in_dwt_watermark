@@ -35,7 +35,7 @@ It is good to start with [watermarking_embedding_demo.ipynb](https://github.com/
 ## Installing
 
 * Clone the repository or download and unzip it.    
-* Install the packages mentioned in `requirements.txt`
+* Install the packages mentioned in `environment.yml`
    ```
     #Do this in the project folder console.
     conda env create -f environment.yml
