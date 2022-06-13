@@ -98,3 +98,25 @@ def decrypt_watermark(encypted_img: np.ndarray, encryption_key: np.ndarray):
     """ 
 
     return np.bitwise_xor(encypted_img, encryption_key)
+
+def watermark_image_encryption(enc_key_path='../assets/encryption_key.npy', generate_key_flag = False):
+    """
+    This function integrates and performs the encryption of watermark image
+
+    :param enc_key_path: the encrypted key path.
+    :return: Returns encrypted watermark image
+    """ 
+    
+    # Generate a encryption key and save it
+    if generate_key_flag:
+        enc_key = generate_2d_key(32, 32)
+        with open('../assets/encryption_key.npy', 'wb') as f:
+            np.save(f, np.array(enc_key))
+
+    watermark_img = get_watermark_img() # Gets a 32*32 binary watermark logo
+
+    with open(enc_key_path, 'rb') as f:
+        enc_key = np.load(f)
+    
+    wat_enc = encrypt_watermark(watermark_img, enc_key)
+    return wat_enc

@@ -18,6 +18,16 @@ def create_non_overlapping_blocks(data: np.ndarray, block_size: tuple):
     blocks_array = blocks_array.swapaxes(1, 2)
     return blocks_array
 
+def create_image_from_overlapping_blocks(data: np.ndarray, image_dims):
+    """
+    This function divides the given 2D data into the given block size
+
+    :param data: 2D array with input data.
+    :param image_dims: a tupel like 256*256
+    :return: Returns the original image
+    """ 
+    return (data.swapaxes(1, 2)).reshape(image_dims)
+
 
 def reshape_2d_data_with_padding(data: np.ndarray, block_size: tuple):
     """
@@ -40,3 +50,12 @@ def reshape_2d_data_with_padding(data: np.ndarray, block_size: tuple):
     new_data[0:height, 0:width] = data
 
     return new_data
+
+def flatten(data):
+    """
+    This function flattens the given list
+
+    :param data: a list of any dimensions
+    :return: Returns the flattened list
+    """ 
+    return [x for xs in data for x in xs]

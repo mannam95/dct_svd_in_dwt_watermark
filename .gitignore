@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Ignore the following folders
+**/assets/embedded_images/**
+**/assets/images/**
