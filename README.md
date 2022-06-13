@@ -10,8 +10,10 @@ with optimal embedding strength](https://link.springer.com/article/10.1007/s1104
 * Watermark encryption, decryption - Completed.
 * DCT - Completed.
 * SVD - Completed.
-* Watermarking embedding - Completed
-* Watermarking Extraction - Inverse of the above process - In Progress.
+* Watermarking embedding - Completed.
+* Watermarking Extraction - Inverse of the above process - Completed.
+* Currently with alpha 2 is performing good - Should check further - In Progress.
+* Need to check the code for any mistake - In Progress.
 
 ## Getting Started
 
