@@ -38,7 +38,7 @@ It is good to start with [watermarking_demo.ipynb](https://github.com/mannam95/w
 * Install the packages mentioned in `requirements.txt`
    ```
     #Do this in the project folder console.
-    conda install --file requirements.txt
+    conda env create -f environment.yml
   ```
 
 ## Citation
