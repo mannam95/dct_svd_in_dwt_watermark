@@ -4,13 +4,14 @@
 for robust and invisible blind image watermarking
 with optimal embedding strength](https://link.springer.com/article/10.1007/s11042-017-4941-1) by Xiao-bing et al.
 
-## Still In-Progess
+## Current status of the implementation(In-Progress)
 * DWT completed.
 * Logistic chaotic key generation completed.
 * Watermark encryption, decryption completed.
-* DCT - In Progress.
-* SVD - In Progress.
-* Inverse of the above process - watermarking extraction - In Progress.
+* DCT - Completed.
+* SVD - Completed.
+* Watermarking embedding - Completed
+* Watermarking Extraction - Inverse of the above process - In Progress.
 
 ## Getting Started
 
