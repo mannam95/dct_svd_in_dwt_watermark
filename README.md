@@ -22,7 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## How to use?
 
 It is good to start with [watermarking_embedding_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_embedding_demo.ipynb) file
-
+It is good to start with [watermarking_extraction_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_extraction_demo.ipynb) file
 
 ## Prerequisites
 
