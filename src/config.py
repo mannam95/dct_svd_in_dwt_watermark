@@ -10,9 +10,12 @@ train_images_path = "../assets/images/"
 # give the path of the images which needs to be watermarked
 embedded_images_path = "../assets/embedded_images/"
 
+# give the path of the images which needs to be watermarked
+extracted_images_path = "../assets/extracted_images/"
+
 # specify the dct block size
 dct_block_size = (8, 8)
 
 # specify the alpha parameter
 # embedding strength, in the paper it is given as [1 - 2]
-alpha = 2
+alpha = 5

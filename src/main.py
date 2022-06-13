@@ -1,10 +1,11 @@
-from perform_embedding import integrate_embedding
 import argparse, sys
+from perform_embedding import integrate_embedding
+from perform_extraction import integrate_extraction
 
 parser=argparse.ArgumentParser()
 
-parser.add_argument('--embedding', help='Embedding - True or False', action=argparse.BooleanOptionalAction)
-parser.add_argument('--extraction', help='Extraction - True or False', action=argparse.BooleanOptionalAction)
+parser.add_argument('--emb', help='Embedding - True or False', action=argparse.BooleanOptionalAction)
+parser.add_argument('--ext', help='Extraction - True or False', action=argparse.BooleanOptionalAction)
 parser.set_defaults(embedding=False)
 parser.set_defaults(extraction=False)
 
@@ -17,8 +18,9 @@ if len(sys.argv) <= 1:
 
 
 if __name__ == '__main__':
-    if args.embedding:
+    if args.emb:
         print("Embedding")
         integrate_embedding()
-    elif args.extraction:
-        print(" Extraction")
+    elif args.ext:
+        print("Extracting")
+        integrate_extraction()

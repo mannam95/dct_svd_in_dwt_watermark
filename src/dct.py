@@ -2,6 +2,7 @@ import scipy.fftpack
 import numpy as np
 
 from split_modulation import get_dct_split_modulation_matrix, update_dct_split_modulation_matrix, update_split_modulation_matrices
+from svd import get_largest_singular_values
 
 # Refer https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.dct.html
 # Refer https://inst.eecs.berkeley.edu/~ee123/sp16/Sections/JPEG_DCT_Demo.html
@@ -57,17 +58,17 @@ def apply_inverse_2d_dct_all_blocks(data: np.ndarray):
     return idct_blocks
 
 
-def update_dct_block(current_dct_block, watermark_encrypted):
+def update_dct_block(current_dct_block, watermark_encrypted_bit):
     """
     This function performs the updation of a single dct block
 
     :param current_dct_block: current single dct block
-    :param watermark_encrypted: encrypted watermark
+    :param watermark_encrypted_bit: encrypted watermark bit
     :return: Returns the modified dct block
     """ 
     sub_mod1, sub_mod2 = get_dct_split_modulation_matrix(current_dct_block) # get split modulation matrices
 
-    new_sub_mod1, new_sub_mod2 = update_split_modulation_matrices(watermark_encrypted, sub_mod1, sub_mod2) # update split modulation matrices
+    new_sub_mod1, new_sub_mod2 = update_split_modulation_matrices(watermark_encrypted_bit, sub_mod1, sub_mod2) # update split modulation matrices
 
     updated_dct_block = update_dct_split_modulation_matrix(current_dct_block, new_sub_mod1, new_sub_mod2) # update current dct block coefficient matrix.
 
@@ -86,7 +87,42 @@ def update_dct_blocks(dct_blocks, watermark_encrypted):
 
     for i, idata in enumerate(dct_blocks):
         for j, jdata in enumerate(idata):
-            current_dct_block_updated = update_dct_block(jdata, watermark_encrypted) # get updated dct current block
+            current_dct_block_updated = update_dct_block(jdata, watermark_encrypted[i][j]) # get updated dct current block
             updated_dct_blocks[i][j] = current_dct_block_updated # store the updated dct block
             
     return updated_dct_blocks
+
+
+def get_single_dct_block_watermarkbit(dct_block):
+    """
+    This function performs the extraction of the single watermark bit
+
+    :param dct_block: single dct block
+    :return: Returns the extracted watermark bit
+    """ 
+
+    sub_mod1, sub_mod2 = get_dct_split_modulation_matrix(dct_block) # get split modulation matrices
+
+    ls1, ls2 = get_largest_singular_values(sub_mod1, sub_mod2)
+
+    if ls1 >= ls2:
+        return 1
+    else:
+        return 0
+
+
+def get_watermarkbits_from_dct_blocks(dct_blocks):
+    """
+    This function performs the extraction of the watermark bits
+
+    :param dct_blocks: all the current image dct blocks
+    :return: Returns the extracted watermark bits
+    """ 
+    watermark_bits = np.zeros((dct_blocks.shape[0], dct_blocks.shape[1]))
+
+    for i, idata in enumerate(dct_blocks):
+        for j, jdata in enumerate(idata):
+            current_dct_block_updated = get_single_dct_block_watermarkbit(jdata) # get updated dct current block
+            watermark_bits[i][j] = current_dct_block_updated # store the updated dct block
+            
+    return watermark_bits

@@ -131,4 +131,6 @@ dmypy.json
 
 # Ignore the following folders
 **/assets/embedded_images/**
+**/assets/extracted_images/**
 **/assets/images/**
+**/assets/temp/**
