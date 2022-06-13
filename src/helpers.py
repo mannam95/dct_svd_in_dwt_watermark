@@ -1,4 +1,5 @@
 import numpy as np
+from PIL import Image
 
 def create_non_overlapping_blocks(data: np.ndarray, block_size: tuple):
     """
@@ -59,3 +60,17 @@ def flatten(data):
     :return: Returns the flattened list
     """ 
     return [x for xs in data for x in xs]
+
+# read Image
+def read_image(image_path):
+    """
+    This function reads the image from given path
+
+    :param image_path: file path
+    :return: Returns the image array
+    """ 
+    img = Image.open(image_path)
+    img = img.convert(mode='L') # convert image to grayscale
+    img = np.asarray(img)
+
+    return img
