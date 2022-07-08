@@ -43,6 +43,13 @@ It is good to start with [watermarking_extraction_demo.ipynb](https://github.com
     conda env create -f environment.yml
   ```
 
+## Code Style Enforcements
+  
+* Used `flake8` for enforcing code style.
+   ```
+    #Do this in the project folder console.
+    flake8 --ignore E501 .
+
 ## Citation
 If you use this code for your research, please cite the paper this code is based on: <a href="https://link.springer.com/article/10.1007/s11042-017-4941-1">A novel hybrid of DCT and SVD in DWT domain
 for robust and invisible blind image watermarking
