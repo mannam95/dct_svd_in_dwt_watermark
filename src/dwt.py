@@ -10,7 +10,7 @@ def dwt_2d(data, wavelet="haar"):
     :param data: 2D array with input data.
     :param wavelet: Wavelet object or name string, or 2-tuple of wavelets. This can also be a tuple containing a wavelet to apply along each axis in axes.
     :return: Approximation(LL), horizontal detail(LH), vertical detail(HL) and diagonal detail(HH) coefficients respectively.
-    """ 
+    """
     return pywt.dwt2(data, wavelet)
 
 
@@ -22,5 +22,5 @@ def idwt_2d(coeffs, wavelet="haar"):
     :param coeffs: Approximation(LL), horizontal detail(LH), vertical detail(HL) and diagonal detail(HH) coefficients respectively.
     :param wavelet: Wavelet object or name string, or 2-tuple of wavelets. This can also be a tuple containing a wavelet to apply along each axis in axes.
     :return: Approximation(LL), horizontal detail(LH), vertical detail(HL) and diagonal detail(HH) coefficients respectively.
-    """ 
+    """
     return pywt.idwt2(coeffs, wavelet)

@@ -22,3 +22,6 @@ dct_block_size = (8, 8)
 # specify the alpha parameter
 # embedding strength, in the paper it is given as [1 - 2]
 alpha = 5
+
+# specify to take first logo ot second logo.
+is_first_logo = True
