@@ -20,7 +20,7 @@ def integrate_embedding():
     """ 
 
     # Watermark encrypted
-    wat_enc = watermark_image_encryption(config.global_enc_key_path, config.generate_enc_key)
+    wat_enc = watermark_image_encryption()
 
     # This loop runs for all the files presented in the given dirctory
     for file in os.listdir(config.train_images_path):
