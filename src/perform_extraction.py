@@ -7,7 +7,7 @@ from dct import apply_2d_dct_all_blocks, get_watermarkbits_from_dct_blocks
 from dwt import dwt_2d
 from helpers import create_non_overlapping_blocks
 from pathlib import Path
-from watermark_encryption import watermark_image_decryption
+from watermark_encryption_decryption import watermark_image_decryption
 
 
 def integrate_extraction():

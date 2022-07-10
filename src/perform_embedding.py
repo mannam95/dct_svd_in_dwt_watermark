@@ -7,7 +7,7 @@ from dwt import dwt_2d, idwt_2d
 from helpers import create_image_from_overlapping_blocks, create_non_overlapping_blocks
 from pathlib import Path
 
-from watermark_encryption import watermark_image_encryption
+from watermark_encryption_decryption import watermark_image_encryption
 
 
 def integrate_embedding():

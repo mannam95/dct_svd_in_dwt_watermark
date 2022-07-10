@@ -10,4 +10,5 @@ dependencies:
   - scipy
   - pillow
   - matplotlib
+  - pywavelets
   - flake8
