@@ -4,16 +4,15 @@
 for robust and invisible blind image watermarking
 with optimal embedding strength](https://link.springer.com/article/10.1007/s11042-017-4941-1) by Xiao-bing et al.
 
-## Current status of the implementation(In-Progress)
+## Current status of the implementation(Completed)
 * DWT - Completed.
 * Logistic chaotic key generation - Completed.
 * Watermark encryption, decryption - Completed.
 * DCT - Completed.
 * SVD - Completed.
-* Watermarking embedding - Completed.
+* Watermarking Embedding - Completed.
 * Watermarking Extraction - Inverse of the above process - Completed.
-* Currently with alpha 2 is performing good - Should check further - In Progress.
-* Need to check the code for any mistake - In Progress.
+* Currently with alpha 2 is performing good.
 
 ## Getting Started
 
@@ -27,12 +26,12 @@ It is good to start with [watermarking_extraction_demo.ipynb](https://github.com
 ## Prerequisites
 
 * How to setup Python environment
-* Little signal processing knowledge
+* Knowledge signal processing
     * Discrete Cosine Transform(DCT),
     * Discrete Wavelet Transform(DWT),
     * Discrete Fourier Transform(DFT),
     * Singular Value Decomposition(SVD)
-* Watermarking Algorithms.
+* How watermarking algorithms work?.
 
 ## Installing
 
@@ -50,10 +49,21 @@ It is good to start with [watermarking_extraction_demo.ipynb](https://github.com
     #Do this in the project folder console.
     flake8 --ignore E501 .
 
+## Code structure
+- Most of the files are self-understood by name.
+- Every function has the documentation.
+- The documentation is followed by `docstring` pattern
+
+## Pull Request
+- You are always welcome to contribute to this repository by sending a [pull request](https://help.github.com/articles/about-pull-requests/).
+- Please run `flake8 --ignore E501 .` before you commit the code. 
+- Please also add the documentation for the implementations/corrections.
+
 ## Citation
 If you use this code for your research, please cite the paper this code is based on: <a href="https://link.springer.com/article/10.1007/s11042-017-4941-1">A novel hybrid of DCT and SVD in DWT domain
 for robust and invisible blind image watermarking
 with optimal embedding strength</a>:
+
 
 ```
 @article{Kang2018,
