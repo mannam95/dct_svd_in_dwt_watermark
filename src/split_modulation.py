@@ -46,20 +46,21 @@ def update_dct_split_modulation_matrix(data: np.ndarray, split_matrix1, split_ma
     return data
 
 
-def update_split_modulation_matrices(watermark_encrypted_bit, split_matrix1, split_matrix2):
+def update_split_modulation_matrices(watermark_encrypted_bit, split_matrix1, split_matrix2, alpha):
     """
     This function does modification of the split modulation matrices
 
     :param watermark_encrypted_bit: encrypted watermark bit
     :param split_matrix1: first split modulation matrix
     :param split_matrix2: second split modulation matrix
+    :param alpha: embedding strength.
     :return: Returns the modified split modulation matrices
     """
 
     u1, s1, v1 = apply_svd(split_matrix1)  # Apply svd on split modulation matrix1
     u2, s2, v2 = apply_svd(split_matrix2)  # Apply svd on split modulation matrix2
 
-    new_s1, new_s2 = modify_singular_values(s1, s2, watermark_encrypted_bit)
+    new_s1, new_s2 = modify_singular_values(s1, s2, watermark_encrypted_bit, alpha)
 
     new_sub_mod1 = u1 * new_s1 * v1.transpose()
     new_sub_mod2 = u2 * new_s2 * v2.transpose()

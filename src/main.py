@@ -1,27 +1,16 @@
-import argparse
-import sys
-from perform_embedding import integrate_embedding
-from perform_extraction import integrate_extraction
-
-parser = argparse.ArgumentParser()
-
-parser.add_argument('--emb', help='Embedding - True or False', action=argparse.BooleanOptionalAction)
-parser.add_argument('--ext', help='Extraction - True or False', action=argparse.BooleanOptionalAction)
-parser.set_defaults(embedding=False)
-parser.set_defaults(extraction=False)
-
-args = parser.parse_args()
-
-if len(sys.argv) <= 1:
-    print("No arguments supplied!")
-    print("Please check by running 'python main.py -h'")
-    exit(1)
+from config import BaseOptions
+from perform_embedding import Embed
+from perform_extraction import Extract
 
 
 if __name__ == '__main__':
-    if args.emb:
+    opt = BaseOptions().parse()   # get training options
+
+    if opt.emb:
         print("Embedding")
-        integrate_embedding()
-    elif args.ext:
+        encrypt = Embed(opt)
+        encrypt.integrate_embedding()
+    elif opt.ext:
         print("Extracting")
-        integrate_extraction()
+        decrypt = Extract(opt)
+        decrypt.integrate_extraction()

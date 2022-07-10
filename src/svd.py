@@ -1,5 +1,4 @@
 import numpy as np
-import config
 
 
 def apply_svd(data: np.ndarray):
@@ -13,13 +12,14 @@ def apply_svd(data: np.ndarray):
     return (u, s, v)
 
 
-def modify_singular_values(s1, s2, watermark_encrypted_bit):
+def modify_singular_values(s1, s2, watermark_encrypted_bit, alpha):
     """
     This function modifies the largest singular values
 
-    :param s1: first singular values of split modulation matrix
-    :param s2: second singular values of split modulation matrix
-    :param watermark_encrypted_bit: encrypted watermark bit
+    :param s1: first singular values of split modulation matrix.
+    :param s2: second singular values of split modulation matrix.
+    :param watermark_encrypted_bit: encrypted watermark bit.
+    :param alpha: embedding strength.
     :return: Returns the modified singular values
     """
     largest_s1_index = list(s1).index(max(list(s1)))
@@ -28,7 +28,6 @@ def modify_singular_values(s1, s2, watermark_encrypted_bit):
     maxs1, maxs2 = s1[largest_s1_index], s1[largest_s2_index]  # In paper termed as lambda1, theta1 largest singular values.
     mean_e = (maxs1 + maxs2) / 2  # In paper termed as E.
 
-    alpha = config.alpha
     new_maxs1, new_maxs2 = None, None
 
     if watermark_encrypted_bit == 1:
