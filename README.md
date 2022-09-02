@@ -4,15 +4,6 @@
 for robust and invisible blind image watermarking
 with optimal embedding strength](https://link.springer.com/article/10.1007/s11042-017-4941-1) by Xiao-bing et al.
 
-## Current status of the implementation(Completed)
-* DWT - Completed.
-* Logistic chaotic key generation - Completed.
-* Watermark encryption, decryption - Completed.
-* DCT - Completed.
-* SVD - Completed.
-* Watermarking Embedding - Completed.
-* Watermarking Extraction - Inverse of the above process - Completed.
-* Currently with alpha 2 is performing good.
 
 ## Getting Started
 
@@ -20,8 +11,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## How to use?
 
-It is good to start with [watermarking_embedding_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_embedding_demo.ipynb) file
-It is good to start with [watermarking_extraction_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_extraction_demo.ipynb) file
+- It is good to start with [watermarking_embedding_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_embedding_demo.ipynb) file
+- It is good to start with [watermarking_extraction_demo.ipynb](https://github.com/mannam95/watermark_dct_svd_in_dwt/blob/main/src/watermarking_extraction_demo.ipynb) file
 
 ## Prerequisites
 
@@ -39,8 +30,16 @@ It is good to start with [watermarking_extraction_demo.ipynb](https://github.com
 * Install the packages mentioned in `environment.yml`
    ```
     #Do this in the project folder console.
-    conda env create -f environment.yml
+    conda env create -f env.yml
   ```
+
+## Usage
+ * Watermark Embedding
+   - `python main.py --emb --inp_dir_path="images-directory" --emb_dir_path="save-directory"`
+ * Watermark Extraction
+   - `python main.py --ext --emb_dir_path="embeded-images-directory" --ext_dir_path="extracted-images-directory"`
+* Apart from the above options, onw can check additional options by running
+   - `python main.py --help`
 
 ## Code Style Enforcements
   
