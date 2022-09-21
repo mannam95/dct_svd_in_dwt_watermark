@@ -31,6 +31,10 @@ class Embed():
         # Watermark encrypted
         wat_enc = self.encrypt_decrypt.watermark_image_encryption()
 
+        # create the directory for saving embedded images.
+        if not os.path.exists(self.options.emb_dir_path):
+            os.makedirs(self.options.emb_dir_path)
+
         # This loop runs for all the files presented in the given dirctory
         for file in tqdm(os.listdir(self.options.inp_dir_path)):
             
@@ -42,16 +46,9 @@ class Embed():
 
             # get the coefficients of DWT transform
             LL, (LH, HL, HH) = dwt_2d(img, 'haar')
-            
-            selected_block = None
-            if self.options.dwt_level == 'LL':
-                selected_block = LL
-            elif self.options.dwt_level == 'LH':
-                selected_block = LH
-            elif self.options.dwt_level == 'HL':
-                selected_block = HL
-            else:
-                selected_block = HH
+
+            # Get the selected block.
+            selected_block = locals()[self.options.dwt_level]
 
             # creates non-overlapping blocks.
             non_overlapping_blocks = create_non_overlapping_blocks(selected_block, self.options.dct_block_size)
@@ -79,11 +76,7 @@ class Embed():
             else:
                 embedded_image = idwt_2d(coeffs=(LL, (LH, HL, modified_block)))
 
-            # create the directory for saving embedded images.
-            if not os.path.exists(self.options.emb_dir_path):
-                os.makedirs(self.options.emb_dir_path)
-
             # Save thq embedded image.
             # plt.imsave(config.embedded_images_path + "test.png", embedded_image, cmap=cm.gray)
             im = Image.fromarray(embedded_image)
-            im.convert("L").save(self.options.emb_dir_path + "/" + self.options.dwt_level + '_' + file)
+            im.convert("L").save(self.options.emb_dir_path + "/" + file)

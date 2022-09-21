@@ -29,8 +29,12 @@ class Extract():
         :return: Returns the embedded watermark image
         """
 
+        # create the extracted images path.
+        if not os.path.exists(self.options.ext_dir_path):
+            os.makedirs(self.options.ext_dir_path)
+
         # This loop runs for all the files presented in the given dirctory
-        for index, file in tqdm(enumerate(os.listdir(self.options.emb_dir_path))):
+        for file in tqdm(os.listdir(self.options.emb_dir_path)):
 
             # open the image.
             img = Image.open(self.options.emb_dir_path + '/' + file)
@@ -40,20 +44,9 @@ class Extract():
 
             # get the coefficients of DWT transform.
             LL, (LH, HL, HH) = dwt_2d(img, 'haar')
-
-            selected_block = None
-            if self.options.dwt_level == 'LL':
-                print('LL')
-                selected_block = LL
-            elif self.options.dwt_level == 'LH':
-                print('LH')
-                selected_block = LH
-            elif self.options.dwt_level == 'HL':
-                print('HL')
-                selected_block = HL
-            else:
-                print('HH')
-                selected_block = HH
+            
+            # Get the selected block.
+            selected_block = locals()[self.options.dwt_level]
 
             # get the non-overlapping blocks.
             non_overlapping_blocks = create_non_overlapping_blocks(selected_block, self.options.dct_block_size)
@@ -72,10 +65,6 @@ class Extract():
 
             # Convert the int values to binary.
             original_watermark_image = original_watermark_image > 0
-
-            # create the extracted images path.
-            if not os.path.exists(self.options.ext_dir_path):
-                os.makedirs(self.options.ext_dir_path)
             
             # Save the extracted watermark.
             img = Image.fromarray(original_watermark_image)
