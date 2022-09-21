@@ -42,7 +42,7 @@ class Extract():
             LL, (LH, HL, HH) = dwt_2d(img, 'haar')
 
             # get the non-overlapping blocks.
-            non_overlapping_blocks = create_non_overlapping_blocks(LL, self.options.dct_block_size)
+            non_overlapping_blocks = create_non_overlapping_blocks(HL, self.options.dct_block_size)
 
             # applies dct to all the non-overlapping blocks
             dct_blocks = apply_2d_dct_all_blocks(non_overlapping_blocks)

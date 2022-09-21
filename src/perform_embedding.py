@@ -43,7 +43,7 @@ class Embed():
             LL, (LH, HL, HH) = dwt_2d(img, 'haar')
 
             # creates non-overlapping blocks.
-            non_overlapping_blocks = create_non_overlapping_blocks(LL, self.options.dct_block_size)
+            non_overlapping_blocks = create_non_overlapping_blocks(HL, self.options.dct_block_size)
 
             # applies dct to all the non-overlapping blocks.
             dct_blocks = apply_2d_dct_all_blocks(non_overlapping_blocks)
@@ -55,10 +55,10 @@ class Embed():
             idct_blocks = apply_inverse_2d_dct_all_blocks(new_dct_blocks)
 
             # get the modified LL band.
-            iLL = create_image_from_overlapping_blocks(idct_blocks, LL.shape)
+            iHL = create_image_from_overlapping_blocks(idct_blocks, HL.shape)
 
             # perform inverse DWT transform.
-            embedded_image = idwt_2d(coeffs=(iLL, (LH, HL, HH)))
+            embedded_image = idwt_2d(coeffs=(LL, (LH, iHL, HH)))
 
             # create the directory for saving embedded images.
             if not os.path.exists(self.options.emb_dir_path):
