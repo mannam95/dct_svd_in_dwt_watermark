@@ -12,3 +12,6 @@ dependencies:
   - matplotlib
   - pywavelets
   - flake8
+  - pip
+  - pip:
+    - tqdm

@@ -5,6 +5,7 @@ Written by Srinath Mannam
 """
 
 import argparse
+from email.policy import default
 
 class BaseOptions():
     """This class defines options used during both training and test time.
@@ -33,6 +34,7 @@ class BaseOptions():
         parser.add_argument('--emb_dir_path', type=str, default='../assets/embedded_images', help='path of the images where the watermarked images should be stored.')
         parser.add_argument('--ext_dir_path', type=str, default='../assets/extracted_images', help='path of the images where watermark extracted images should be stored.')
         parser.add_argument('--dct_block_size', type=tuple, default=(8, 8), help='dct block size, as of now only 8*8 works')
+        parser.add_argument('--dwt_level', type=str, default='LL', help='which dwt block to embed the watermark')
         parser.add_argument('--alpha', type=int, default=2, help='embedding strength, in the paper it is given between [1 - 2]')
 
         return parser
