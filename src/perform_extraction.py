@@ -30,14 +30,14 @@ class Extract():
         """
 
         # create the extracted images path.
-        if not os.path.exists(self.options.ext_dir_path):
-            os.makedirs(self.options.ext_dir_path)
+        if not os.path.exists(self.options.ext_out_dir_path):
+            os.makedirs(self.options.ext_out_dir_path)
 
         # This loop runs for all the files presented in the given dirctory
-        for file in tqdm(os.listdir(self.options.emb_dir_path)):
+        for file in tqdm(os.listdir(self.options.ext_inp_dir_path)):
 
             # open the image.
-            img = Image.open(self.options.emb_dir_path + '/' + file)
+            img = Image.open(self.options.ext_inp_dir_path + '/' + file)
 
             # convert the image to grayscale.
             img = np.asarray(img.convert(mode='L'))
@@ -68,4 +68,4 @@ class Extract():
             
             # Save the extracted watermark.
             img = Image.fromarray(original_watermark_image)
-            img.save(self.options.ext_dir_path + "/" + file)
+            img.save(self.options.ext_out_dir_path + "/" + file)
