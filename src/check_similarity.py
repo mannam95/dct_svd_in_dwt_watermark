@@ -5,10 +5,13 @@ from PIL import Image
 import numpy as np
 import warnings
 
+from watermark_encryption_decryption import Encrypt_Decrypt
+
 class SimilarityCheck:
     def __init__(self, opt):
         warnings.filterwarnings("ignore", category=DeprecationWarning) 
         self.opt = opt
+        self.encrypt_decrypt = Encrypt_Decrypt(opt)
 
     def check_images_similarity(self, img1, img2, metric_name = 'ssim'):
         """This function checks the similarity between two images.
@@ -35,8 +38,7 @@ class SimilarityCheck:
         for file in os.listdir(self.opt.similarity_check_path ):
             img1 = Image.open(self.opt.similarity_check_path + '/' + file)
             img1 = np.asarray(img1.convert(mode='L'))
-            img2 = Image.open(self.opt.watermark_path)
-            img2 = np.asarray(img2.convert(mode='L'))
+            img2 = self.encrypt_decrypt.watermark_image_encryption()
             self.similarity[file] = self.check_images_similarity(img1, img2, self.opt.similarity_metric)
     
     def copy_similar_images(self):
