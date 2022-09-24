@@ -42,7 +42,6 @@ class SimilarityCheck:
             img1 = np.where(img1 > 127, 1, 0)  # convert img1 to binary
             img2 = self.encrypt_decrypt.watermark_image_encryption()
             self.similarity[file] = self.check_images_similarity(img1, img2, self.opt.similarity_metric)
-            break
     
     def copy_similar_images(self):
         """This function copies the similar images to a new folder.
