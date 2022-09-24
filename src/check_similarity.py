@@ -4,7 +4,7 @@ from skimage.metrics import structural_similarity
 from PIL import Image
 import numpy as np
 import warnings
-
+from tqdm import tqdm
 from watermark_encryption_decryption import Encrypt_Decrypt
 
 class SimilarityCheck:
@@ -34,8 +34,9 @@ class SimilarityCheck:
 
         :return: None.
         """
+        print("Getting the list of images similar")
         self.similarity = {}
-        for file in os.listdir(self.opt.similarity_check_path ):
+        for file in tqdm(os.listdir(self.opt.similarity_check_path)):
             img1 = Image.open(self.opt.similarity_check_path + '/' + file)
             img1 = np.asarray(img1.convert(mode='L'))
             img2 = self.encrypt_decrypt.watermark_image_encryption()
@@ -46,7 +47,8 @@ class SimilarityCheck:
 
         :return: None.
         """
-        if not os.path.exists(self.opt.fil_fing_images_path):
+        print("Copying the similar images to a new folder")
+        if not tqdm(os.path.exists(self.opt.fil_fing_images_path)):
             os.makedirs(self.opt.fil_fing_images_path)
         if not os.path.exists(self.opt.fil_wat_images_path):
             os.makedirs(self.opt.fil_wat_images_path)
