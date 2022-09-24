@@ -35,7 +35,7 @@ class BaseOptions():
         # Similarity check options
         parser.add_argument('--check_similarity', action='store_true', help='if specified, then it will filter out the images that are not similar.')
         parser.add_argument('--similarity_threshold', type=float, default=0.9, help='similarity threshold, if the similarity is less than this threshold, then the image will be discarded.')
-        parser.add_argument('--similarity_metric', type=str, default='ssim', help='similarity metric, can be either ssim or mse or rse.')
+        parser.add_argument('--similarity_metric', type=str, default='ssim', help='similarity metric, can be either ssim or mse or sre.')
         parser.add_argument('--similarity_check_path', type=str, default='../assets/embedded_images', help='path of the folder where similarity should be checked.')
         parser.add_argument('--org_fing_images_path', type=str, default='', help='path of the images where the original fingerprint images are stored.')
         parser.add_argument('--fil_fing_images_path', type=str, default='', help='path of the folder where the filtered fingerprint images should be stored.')

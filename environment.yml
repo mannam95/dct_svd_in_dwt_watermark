@@ -16,3 +16,4 @@ dependencies:
   - pip:
     - tqdm
     - image-similarity-measures
+    - scikit-metrics
