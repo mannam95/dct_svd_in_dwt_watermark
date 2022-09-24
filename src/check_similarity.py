@@ -39,8 +39,12 @@ class SimilarityCheck:
         for file in tqdm(os.listdir(self.opt.similarity_check_path)):
             img1 = Image.open(self.opt.similarity_check_path + '/' + file)
             img1 = np.asarray(img1.convert(mode='L'))
+            img1 = np.where(img1 > 127, 1, 0)  # convert img1 to binary
             img2 = self.encrypt_decrypt.watermark_image_encryption()
+            print("unique values in img1: ", np.unique(img1))
+            print("unique values in img2: ", np.unique(img2))
             self.similarity[file] = self.check_images_similarity(img1, img2, self.opt.similarity_metric)
+            break
     
     def copy_similar_images(self):
         """This function copies the similar images to a new folder.
@@ -48,11 +52,12 @@ class SimilarityCheck:
         :return: None.
         """
         print("Copying the similar images to a new folder")
-        if not tqdm(os.path.exists(self.opt.fil_fing_images_path)):
+        if not os.path.exists(self.opt.fil_fing_images_path):
             os.makedirs(self.opt.fil_fing_images_path)
         if not os.path.exists(self.opt.fil_wat_images_path):
             os.makedirs(self.opt.fil_wat_images_path)
-        for file in self.similarity:
+        print(self.similarity)
+        for file in tqdm(self.similarity):
             if self.similarity[file] >= self.opt.similarity_threshold:
                 os.system('cp ' + self.opt.org_fing_images_path + '/' + file + ' ' + self.opt.fil_fing_images_path)
                 os.system('cp ' + self.opt.org_wat_images_path + '/' + file + ' ' + self.opt.fil_wat_images_path)
