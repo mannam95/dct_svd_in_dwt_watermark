@@ -33,8 +33,11 @@ class Extract():
         if not os.path.exists(self.options.ext_out_dir_path):
             os.makedirs(self.options.ext_out_dir_path)
         
-        # get the list of all images in the input directory by skipping the files wnds with 'real_A.png'
+        # get the list of all images in the input directory by skipping the files ends with 'real_A.png'
         images_list = [file for file in os.listdir(self.options.ext_inp_dir_path) if not file.endswith('real_A.png')]
+
+        # skip the files ends with 'real_B.png'
+        images_list = [file for file in images_list if not file.endswith('real_B.png')]
 
         # This loop runs for all the files presented in the given dirctory
         for file in tqdm(images_list):
