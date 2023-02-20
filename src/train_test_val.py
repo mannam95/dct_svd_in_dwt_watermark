@@ -41,6 +41,6 @@ if __name__ == '__main__':
 
     # Reapeat the following steps for train, test and val
     # Copy the files from the source folder to the destination folder
-    copy_files(sorted_files, 0, 2000, src_path, dest_path + 'train/')
+    copy_files(sorted_files, 0, 5000, src_path, dest_path + 'train/')
     copy_files(sorted_files, 30000, 30100, src_path, dest_path + 'val/')
     copy_files(sorted_files, 40000, 50000, src_path, dest_path + 'test/')
