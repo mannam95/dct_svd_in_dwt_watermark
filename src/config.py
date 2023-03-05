@@ -46,7 +46,8 @@ class BaseOptions():
         parser.add_argument('--gen_enc_key', action='store_true', help='if specified, then watermark encryption key will be generated.')
         parser.add_argument('--enc_key_path', type=str, default='../assets/encryption_key.npy', help='path of the images which needs to be watermarked.')
         parser.add_argument('--is_enc_watermark', action='store_false', help='if specified, then watermark will not be encrypted.')
-        parser.add_argument('--is_first_logo', action='store_false', help='if specified, then first logo will be used.')
+        # add an argument called logoname with 3 options pi, xut, hourglass
+        parser.add_argument('--logo_name', type=str, default='pi', help='name of the logo to be used for watermarking. options;pi, xut, hourglass')
         parser.add_argument('--dct_block_size', type=tuple, default=(8, 8), help='dct block size, as of now only 8*8 works')
         parser.add_argument('--dwt_level', type=str, default='LL', help='which dwt block to embed the watermark')
 
