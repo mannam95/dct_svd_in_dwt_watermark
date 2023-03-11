@@ -38,8 +38,10 @@ These instructions will get you a copy of the project up and running on your loc
    - `python main.py --emb --emb_inp_dir_path="images-directory" --emb_out_dir_path="save-directory"`
  * Watermark Extraction
    - `python main.py --ext --ext_inp_dir_path="embeded-images-directory" --ext_out_dir_path="extracted-images-directory"`
-* Apart from the above options, onw can check additional options by running
+ * Apart from the above options, onw can check additional options by running
    - `python main.py --help`
+ * There re additional features which have been implemented for my use-case. Those can be ignore if not required.
+ 
 
 ## Code Style Enforcements
   
