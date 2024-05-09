@@ -75,5 +75,6 @@ def read_image(image_path):
     img = Image.open(image_path)
     img = img.convert(mode='L')  # convert image to grayscale
     img = np.asarray(img)
+    converted_array = (img != 0).astype(int)
 
-    return img
+    return converted_array
