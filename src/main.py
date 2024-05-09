@@ -9,15 +9,15 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 if __name__ == '__main__':
     opt = BaseOptions().parse()   # get training options
 
-    if opt.emb:
+    if opt.feature == 'emb':
         print("Embedding")
         encrypt = Embed(opt)
         encrypt.integrate_embedding()
-    elif opt.ext:
+    elif opt.feature == 'ext':
         print("Extracting")
         decrypt = Extract(opt)
         decrypt.integrate_extraction()
-    elif opt.check_similarity:
+    elif opt.feature == 'check_similarity':
         print("Checking Similarity")
         similarity_check = SimilarityCheck(opt)
         similarity_check.check_similarity_all_images()
