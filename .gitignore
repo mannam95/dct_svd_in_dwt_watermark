@@ -136,3 +136,8 @@ assets/images/
 assets/temp/
 assets/test_images/
 automate/
+qr-code/
+assets/qr-codes/
+
+# Ignore ven
+tf-env/
